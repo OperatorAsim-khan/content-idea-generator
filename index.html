@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Content Idea Generator</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -29,14 +30,27 @@
     </div>
     
     <div class="input-area">
-      <input 
-        type="text" 
-        id="nicheInput" 
-        placeholder="e.g. low-spec gaming, Pakistani food, fitness for beginners..."
-      />
+      <div class="input-wrapper">
+        <input 
+          type="text" 
+          id="nicheInput" 
+          placeholder="e.g. low-spec gaming, Pakistani food, fitness for beginners..."
+        />
+        <button id="clearInputBtn" class="clear-input-btn hidden">✕</button>
+      </div>
       <button id="generateBtn">Generate Ideas</button>
+      <button class="caption-main-btn" id="captionMainBtn">✍️ Write Caption</button>
     </div>
-
+    
+    <div class="tone-selector">
+      <span class="tone-label">Tone:</span>
+      <button class="tone-btn active" data-tone="Informative">📘 Informative</button>
+      <button class="tone-btn" data-tone="Funny">😄 Funny</button>
+      <button class="tone-btn" data-tone="Motivational">🔥 Motivational</button>
+      <button class="tone-btn" data-tone="Storytelling">📖 Storytelling</button>
+    </div>
+    
+    <div id="captionResult" class="caption-result hidden"></div>
     <div id="output" class="output hidden"></div>
   </div>
 
