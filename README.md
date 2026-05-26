@@ -1,4 +1,4 @@
-# 💡 Content Idea Generator
+# 💡Kreevo — AI-powered content tool for creators
 
 An AI-powered web app that generates 10 unique content ideas instantly based on your niche. Built for solo creators who need fresh ideas fast.
 
