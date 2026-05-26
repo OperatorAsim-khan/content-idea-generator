@@ -748,33 +748,37 @@ button:disabled {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
   }
 
-  /* Platform buttons — stay in one row */
+  /* Platform buttons — row */
   .platform-selector {
     display: flex;
     flex-direction: row;
     gap: 0.4rem;
+    flex-wrap: nowrap;
   }
 
   .platform-btn {
     flex: 1;
-    padding: 0.6rem 0.5rem;
-    font-size: 0.78rem;
+    padding: 0.55rem 0.4rem;
+    font-size: 0.75rem;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  /* Format buttons — wrap in rows not columns */
+  /* Format buttons — horizontal wrapping rows */
   .format-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
@@ -784,24 +788,30 @@ button:disabled {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.4rem;
+    flex: 1;
   }
 
   .format-btn {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
     flex: 0 0 auto;
+    width: auto;
   }
 
-  /* Tone buttons — wrap in rows not columns */
+  /* Tone buttons — horizontal wrapping rows */
   .tone-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
 
   .tone-btn {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
     flex: 0 0 auto;
+    width: auto;
   }
 
   /* Input area */
@@ -813,19 +823,52 @@ button:disabled {
   .input-wrapper {
     min-width: unset;
     width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: 0 0 0 3px var(--glow);
   }
 
-  button#generateBtn {
+  .input-wrapper input {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding-right: 2.8rem;
     width: 100%;
+  }
+
+  .input-wrapper input:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  .clear-input-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Buttons — not full width, centered with padding */
+  button#generateBtn {
+    width: 85%;
+    margin: 0 auto;
+    display: block;
   }
 
   .caption-main-btn {
-    width: 100%;
+    width: 85%;
+    margin: 0 auto;
+    display: block;
   }
 
-  /* Idea cards — fix layout */
+  /* Idea cards */
   .idea-card {
-    padding: 0.9rem 1rem;
+    padding: 0.85rem 0.9rem;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
@@ -835,52 +878,69 @@ button:disabled {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.6rem;
     width: 100%;
+    min-width: 0;
   }
 
   .idea-number {
-    min-width: 26px;
-    height: 26px;
-    font-size: 0.75rem;
+    min-width: 24px;
+    height: 24px;
+    font-size: 0.72rem;
     flex-shrink: 0;
   }
 
   .idea-text {
     font-size: 0.88rem;
     flex: 1;
-    word-break: break-word;
     min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5;
   }
 
   .save-btn {
     flex-shrink: 0;
+    font-size: 1rem;
   }
 
-  /* Explanation — fix overflow */
+  /* Explanation */
   .explanation {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    min-width: 0;
+  }
+
+  .exp-section {
+    width: 100%;
+    min-width: 0;
   }
 
   .exp-title {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 
   .exp-content {
-    font-size: 0.84rem;
-    word-break: break-word;
+    font-size: 0.83rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5;
   }
 
   .exp-steps li {
-    font-size: 0.84rem;
-    word-break: break-word;
+    font-size: 0.83rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
 
   .hook-box {
-    font-size: 0.84rem;
-    word-break: break-word;
+    font-size: 0.83rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .card-caption-btn {
@@ -889,64 +949,64 @@ button:disabled {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+    border-radius: 10px;
   }
 
   /* Caption blocks */
   .caption-block {
-    padding: 1rem;
+    padding: 0.9rem 1rem;
     box-sizing: border-box;
     overflow: hidden;
   }
 
   .caption-block-title {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     padding-right: 3.5rem;
   }
 
   .caption-block-content {
-    font-size: 0.86rem;
-    word-break: break-word;
+    font-size: 0.84rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
   }
 
   .copy-btn {
     top: 0.7rem;
     right: 0.7rem;
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
+    font-size: 0.68rem;
+    padding: 0.22rem 0.55rem;
   }
 
   /* Saved section */
   .saved-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .saved-card {
-    padding: 0.8rem 1rem;
+    padding: 0.75rem 0.9rem;
     box-sizing: border-box;
   }
 
   .saved-card-text {
-    font-size: 0.86rem;
-    word-break: break-word;
+    font-size: 0.84rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .saved-card-meta {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
 
   .clear-btn {
-    font-size: 0.75rem;
-    padding: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
   }
 }
 
 @media (max-width: 400px) {
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  .platform-btn {
-    font-size: 0.72rem;
-    padding: 0.5rem 0.4rem;
-  }
+  h1 { font-size: 1.5rem; }
+  .platform-btn { font-size: 0.7rem; padding: 0.5rem 0.35rem; }
+  .format-btn { font-size: 0.7rem; padding: 0.3rem 0.55rem; }
+  .tone-btn { font-size: 0.7rem; padding: 0.3rem 0.55rem; }
 }

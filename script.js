@@ -219,6 +219,9 @@ No extra explanation, just the 10 ideas.`
     if (!response.ok) throw new Error("API request failed. Check your API key.");
     const data = await response.json();
     displayIdeas(data.choices[0].message.content);
+    setTimeout(() => {
+      output.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
 
   } catch (err) {
     showError(err.message || "Something went wrong. Please try again.");
