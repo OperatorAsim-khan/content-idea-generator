@@ -743,7 +743,7 @@ button:disabled {
 @media (max-width: 768px) {
 
   body {
-    padding: 1.2rem;
+    padding: 1rem;
     align-items: flex-start;
   }
 
@@ -756,31 +756,55 @@ button:disabled {
     margin-bottom: 1.5rem;
   }
 
+  /* Platform buttons — stay in one row */
   .platform-selector {
-    gap: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
   }
 
   .platform-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
     flex: 1;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.78rem;
     text-align: center;
-    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
+  /* Format buttons — wrap in rows not columns */
   .format-selector {
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
 
   .format-btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.4rem;
   }
 
   .format-btn {
     padding: 0.4rem 0.75rem;
     font-size: 0.78rem;
+    flex: 0 0 auto;
   }
 
+  /* Tone buttons — wrap in rows not columns */
+  .tone-selector {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tone-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+    flex: 0 0 auto;
+  }
+
+  /* Input area */
   .input-area {
     flex-direction: column;
     gap: 0.6rem;
@@ -793,35 +817,51 @@ button:disabled {
 
   button#generateBtn {
     width: 100%;
-    text-align: center;
   }
 
   .caption-main-btn {
     width: 100%;
-    text-align: center;
   }
 
-  .tone-selector {
-    gap: 0.5rem;
-  }
-
-  .tone-btn {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.78rem;
-  }
-
+  /* Idea cards — fix layout */
   .idea-card {
     padding: 0.9rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .idea-top {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
   }
 
   .idea-number {
-    min-width: 24px;
-    height: 24px;
+    min-width: 26px;
+    height: 26px;
     font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
   .idea-text {
     font-size: 0.88rem;
+    flex: 1;
+    word-break: break-word;
+    min-width: 0;
+  }
+
+  .save-btn {
+    flex-shrink: 0;
+  }
+
+  /* Explanation — fix overflow */
+  .explanation {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .exp-title {
@@ -830,33 +870,42 @@ button:disabled {
 
   .exp-content {
     font-size: 0.84rem;
+    word-break: break-word;
   }
 
   .exp-steps li {
     font-size: 0.84rem;
+    word-break: break-word;
   }
 
   .hook-box {
     font-size: 0.84rem;
+    word-break: break-word;
   }
 
   .card-caption-btn {
     font-size: 0.78rem;
     padding: 0.45rem 0.9rem;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
   }
 
+  /* Caption blocks */
   .caption-block {
     padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .caption-block-title {
     font-size: 0.75rem;
-    padding-right: 3rem;
+    padding-right: 3.5rem;
   }
 
   .caption-block-content {
     font-size: 0.86rem;
-    padding-right: 0;
+    word-break: break-word;
   }
 
   .copy-btn {
@@ -866,16 +915,19 @@ button:disabled {
     padding: 0.25rem 0.6rem;
   }
 
+  /* Saved section */
   .saved-title {
     font-size: 1rem;
   }
 
   .saved-card {
     padding: 0.8rem 1rem;
+    box-sizing: border-box;
   }
 
   .saved-card-text {
     font-size: 0.86rem;
+    word-break: break-word;
   }
 
   .saved-card-meta {
@@ -890,16 +942,11 @@ button:disabled {
 
 @media (max-width: 400px) {
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .platform-btn {
-    font-size: 0.78rem;
-    padding: 0.5rem 0.6rem;
-  }
-
-  .format-btn {
     font-size: 0.72rem;
-    padding: 0.35rem 0.6rem;
+    padding: 0.5rem 0.4rem;
   }
 }
