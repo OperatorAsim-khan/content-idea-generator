@@ -1,41 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap');
 
-.platform-selector {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.platform-btn {
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 0.75rem 1.6rem;
-  font-size: 0.95rem;
-  border-radius: 50px;
-  font-family: 'Syne', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: none;
-}
-
-.platform-btn:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px var(--glow);
-}
-
-.platform-btn.active {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-color: transparent;
-  color: #fff;
-  box-shadow: 0 4px 20px #7c5cfc44;
-}
-
-
 * {
   margin: 0;
   padding: 0;
@@ -174,11 +138,34 @@ button:disabled {
   gap: 1rem;
   animation: fadeUp 0.4s ease both;
   transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .idea-card:hover {
   border-color: #7c5cfc55;
-  transform: translateX(4px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px #7c5cfc33, 0 4px 12px #00000044;
+}
+
+.idea-card.expanded {
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px #7c5cfc44;
+}
+
+.idea-card.expanded:hover {
+  transform: none;
+}
+
+.idea-card .idea-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .idea-number {
@@ -201,6 +188,11 @@ button:disabled {
   line-height: 1.5;
   color: var(--text);
   padding-top: 0.2rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+  min-width: 0;
+  flex: 1;
 }
 
 .loader {
@@ -232,26 +224,41 @@ button:disabled {
   font-size: 0.9rem;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.platform-selector {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.platform-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.75rem 1.6rem;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: none;
 }
 
-@media (max-width: 500px) {
-  h1 { font-size: 2rem; }
-  .input-area { flex-direction: column; }
-  button { width: 100%; }
+.platform-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--glow);
 }
+
+.platform-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 20px #7c5cfc44;
+}
+
 .format-selector {
   display: flex;
   align-items: center;
@@ -299,27 +306,6 @@ button:disabled {
   border-color: transparent;
   color: #fff;
   box-shadow: 0 4px 12px var(--glow);
-}
-
-.idea-card {
-  cursor: pointer;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.idea-card:hover {
-  border-color: #7c5cfc55;
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 12px 40px #7c5cfc33, 0 4px 12px #00000044;
-}
-
-.idea-card.expanded {
-  border-color: var(--accent);
-  box-shadow: 0 12px 40px #7c5cfc44;
-}
-
-.idea-card.expanded:hover {
-  transform: none;
 }
 
 .explanation {
@@ -402,6 +388,7 @@ button:disabled {
   line-height: 1.5;
   font-style: italic;
 }
+
 .save-btn {
   background: none;
   border: none;
@@ -424,13 +411,6 @@ button:disabled {
 
 .save-btn.saved {
   opacity: 1;
-}
-
-.idea-card .idea-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  width: 100%;
 }
 
 .saved-section {
@@ -519,6 +499,7 @@ button:disabled {
   transform: scale(1.2);
   box-shadow: none;
 }
+
 /* ── Tone Selector ───────────────────────────────── */
 .tone-selector {
   display: flex;
@@ -701,6 +682,7 @@ button:disabled {
 .card-caption-result.hidden {
   display: none;
 }
+
 .input-wrapper {
   flex: 1;
   min-width: 240px;
@@ -739,6 +721,22 @@ button:disabled {
 .clear-input-btn.hidden {
   display: none;
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* ── Mobile Responsive ───────────────────────────── */
 @media (max-width: 768px) {
 
